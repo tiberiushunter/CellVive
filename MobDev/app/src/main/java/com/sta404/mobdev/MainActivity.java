@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_new_game) {
             Intent intent;
             intent = new Intent(this, GameActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             this.startActivity(intent);
         } else if (id == R.id.nav_high_score) {
 
