@@ -31,6 +31,7 @@ public class Board extends View{
             p.setColor(Color.CYAN);
 
             //Draws the player
+
             canvas.drawCircle(x, y, playerRadius, p);
             canvas.drawText(String.valueOf(playerRadius), 100,100, p);
         }
@@ -52,7 +53,7 @@ public class Board extends View{
     public static float getPixelFromDpi(Context context, float screenDpi) {
         DisplayMetrics dM = context.getResources().getDisplayMetrics();
 
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, screenDpi, dM) / 100;
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, screenDpi, dM) / 80;
     }
 
     }
