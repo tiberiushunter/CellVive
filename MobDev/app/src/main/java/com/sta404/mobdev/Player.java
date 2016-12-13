@@ -7,12 +7,13 @@ import android.graphics.Paint;
 import android.view.View;
 
 /**
- * Created by swele on 12/12/2016.
+ * Class to generate the player in the game
  */
 
 public class Player extends View {
     private float x,y;
     Paint p = new Paint();
+
     public Player(Context context) {
         super(context);
     }
