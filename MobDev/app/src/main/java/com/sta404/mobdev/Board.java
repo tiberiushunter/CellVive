@@ -56,4 +56,5 @@ public class Board extends View{
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, screenDpi, dM) / 80;
     }
 
+
     }

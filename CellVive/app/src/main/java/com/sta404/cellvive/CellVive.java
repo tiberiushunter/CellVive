@@ -1,4 +1,4 @@
-package com.sta404.mobdev;
+package com.sta404.cellvive;
 
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -6,20 +6,21 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class GameActivity extends AppCompatActivity {
+public class CellVive extends AppCompatActivity {
 
-    Board b;
+    BoardSurfaceView board;
+    RelativeLayout content, menu;
 
-    RelativeLayout myLayout;
     public float oldX, oldY, newX, newY;
     SensorManager sensorManager;
     Sensor accelerometer;
+
     SensorEventListener listener = new SensorEventListener(){
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
@@ -28,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
                 newX = sensorEvent.values[1];
                 newY = sensorEvent.values[0];
             }
-            updatePlayerLocation();
+            //updatePlayerLocation();
         }
 
         @Override
@@ -37,40 +38,11 @@ public class GameActivity extends AppCompatActivity {
         }
     };
 
-    public void updatePlayerLocation(){
-
-        float dH = b.getHeight();
-        float dW = b.getWidth();
-
-        newX = newX * 2;
-        newY = newY * 2;
-
-        if (newX + oldX >= dW-50 || newX + oldX <= 50){
-            newX = oldX;
-        }else{
-            newX= newX + oldX;
-        }
-
-        if (newY + oldY >= dH-50 || newY + oldY <= 50){
-            newY = oldY;
-        }else{
-            newY= newY + oldY;
-        }
-
-        b.setX(newX);
-        b.setY(newY);
-
-        oldX = newX;
-        oldY = newY;
-
-        b.invalidate();
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_cell_vive);
 
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -80,10 +52,8 @@ public class GameActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        b = new Board(this);
-        myLayout = (RelativeLayout)findViewById(R.id.myLayout);
-
-
+        board = new BoardSurfaceView(this);
+        content = (RelativeLayout)findViewById(R.id.menu);
 
         oldX = getScreenWidth() / 2;
         oldY = getScreenHeight() / 2;
@@ -95,16 +65,20 @@ public class GameActivity extends AppCompatActivity {
 
         TextView tx = (TextView)findViewById(R.id.titleText);
 
-        Typeface tf = Typeface.createFromAsset(getAssets(),  "fonts/SF Funk Master.ttf");
+        Typeface tf = Typeface.createFromAsset(getAssets(),  "fonts/scifi2k2.ttf");
         tx.setTypeface(tf);
 
-        myLayout.addView(b);
+      //  content.addView(board);
 
     }
 
+    public static int getScreenHeight() {
+        return Resources.getSystem().getDisplayMetrics().heightPixels;
+    }
 
-
-
+    public static int getScreenWidth() {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
+    }
 
 
 }
