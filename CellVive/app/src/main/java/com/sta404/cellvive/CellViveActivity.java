@@ -1,5 +1,6 @@
 package com.sta404.cellvive;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
@@ -12,7 +13,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class CellViveActivity extends AppCompatActivity {
+public class CellViveActivity extends Activity {
 
     BoardSurfaceView board;
     RelativeLayout content;
@@ -32,8 +33,8 @@ public class CellViveActivity extends AppCompatActivity {
         public void onSensorChanged(SensorEvent sensorEvent) {
             if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
                 if (board.playerCell != null) {
-                    board.playerCell.newX = sensorEvent.values[1];
-                    board.playerCell.newY = sensorEvent.values[0];
+                    board.playerCell.setNewX(sensorEvent.values[1]);
+                    board.playerCell.setNewY(sensorEvent.values[0]);
                 }
             }
         }

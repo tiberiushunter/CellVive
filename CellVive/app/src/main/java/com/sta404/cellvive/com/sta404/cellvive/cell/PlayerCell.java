@@ -1,20 +1,36 @@
-package com.sta404.cellvive;
+package com.sta404.cellvive.com.sta404.cellvive.cell;
 
-import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 
 /**
  * Class for the PlayerCell's Cell in game
  */
 
 public class PlayerCell extends Cell{
-    float oldX, oldY,newX,newY;
+    float oldX;
+    float oldY;
+    float newX;
+
+    public float getNewX() {
+        return newX;
+    }
+
+    public void setNewX(float newX) {
+        this.newX = newX;
+    }
+
+    public float getNewY() {
+        return newY;
+    }
+
+    public void setNewY(float newY) {
+        this.newY = newY;
+    }
+
+    float newY;
     Paint p = new Paint();
 
     public PlayerCell(float x, float y){
@@ -32,7 +48,7 @@ public class PlayerCell extends Cell{
     }
 
     @Override
-    protected void move(Canvas canvas) {
+    public void move(Canvas canvas) {
 
         float dH = canvas.getHeight();
         float dW = canvas.getWidth();

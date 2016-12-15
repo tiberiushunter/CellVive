@@ -1,13 +1,16 @@
 package com.sta404.cellvive;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
         TextView title = (TextView) findViewById(R.id.titleText);
-        TextView txvNewGame = (TextView) findViewById(R.id.txtVNewGame);
+        TextView txvNewGame = (TextView) findViewById(R.id.txtVNewGame);    //TODO proper names
         TextView txvHighScore = (TextView) findViewById(R.id.txtVHighScore);
         TextView txvRate = (TextView) findViewById(R.id.txtVRate);
         TextView txvAbout = (TextView) findViewById(R.id.txtVAbout);
@@ -41,11 +44,15 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
-    public void onClick(View v) {
+    public void onClickPlay(View v) {
         Intent intent = new Intent(this, CellViveActivity.class);
         this.startActivity(intent);
-
     }
+    public void onClickHighScore(View v) {
+        Intent intent = new Intent(this, HighScoreActivity.class);
+        this.startActivity(intent);
+    }
+
 
     @Override
     protected void onResume() {

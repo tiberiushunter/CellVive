@@ -52,6 +52,8 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewStart"
+            android:onClick="onClickHighScore"
+            android:clickable="true"
             android:layout_marginEnd="64dp"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/txtVNewGame" />
@@ -64,7 +66,7 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewEnd"
-            android:onClick="onClick"
+            android:onClick="onClickPlay"
             android:clickable="true"
             android:layout_marginBottom="25dp"
             android:layout_above="@+id/txtVRate"

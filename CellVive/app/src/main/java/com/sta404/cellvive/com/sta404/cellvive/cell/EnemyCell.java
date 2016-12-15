@@ -1,16 +1,8 @@
-package com.sta404.cellvive;
+package com.sta404.cellvive.com.sta404.cellvive.cell;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Outline;
-import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.ArcShape;
 import android.graphics.drawable.shapes.OvalShape;
-import android.graphics.drawable.shapes.RectShape;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.graphics.drawable.shapes.Shape;
 
 /**
  * Created by swele on 14/12/2016.
@@ -30,17 +22,18 @@ public class EnemyCell extends Cell{
     }
 
     @Override
-    protected void move(Canvas canvas) {
-       x+=dx;
-       y+=dy;
-       if(x>canvas.getWidth() || x<0)
+    public void move(Canvas canvas) {
+        //super.move(canvas); TODO Might not be needed but hey-ho!
+        x+=dx;
+        y+=dy;
+        if(x>canvas.getWidth() || x<0)
            dx=-dx;
-       if(y>canvas.getHeight() || y<0)
+        if(y>canvas.getHeight() || y<0)
            dy=-dy;
 
         //shape.setBounds((int)(x/2),(int)(y/2),(int)x,(int)y);
         shape.setBounds((int)(x),(int)(y),(int)(x+100f),(int)(y+100f));
 
-        shape.draw(canvas);
+shape.draw(canvas);
     }
 }

@@ -1,21 +1,22 @@
 package com.sta404.cellvive;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.TextView;
+
+import com.sta404.cellvive.com.sta404.cellvive.cell.Cell;
+import com.sta404.cellvive.com.sta404.cellvive.cell.EnemyCell;
+import com.sta404.cellvive.com.sta404.cellvive.cell.FoodCell;
+import com.sta404.cellvive.com.sta404.cellvive.cell.PlayerCell;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
+/** TODO Change all the class headers
  * Created by swele on 14/12/2016.
  */
 
@@ -91,11 +92,11 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
 
                 canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
                 for (Cell cell : cells) {
-                    if (cell.isAlive) {
+                    if (cell.isAlive()) {
                         cell.move(canvas);
                         //TODO Potenitally put the cell.shape.getBounds... etc bit at the top, work out if thats faster
                         if (cell instanceof EnemyCell) {
-                            if (cell.shape.getBounds().intersect(playerCell.shape.getBounds())) {
+                            if (cell.getBounds().intersect(playerCell.getBounds())) {
                                 //try {
                                 //    thread.sleep(1000);
                                 //}catch (InterruptedException e) {
@@ -103,18 +104,15 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
                                 //    e.printStackTrace();
                                 //}
                                 activity.updateLives();
-                                cell.shape.setBounds(0, 0, 0, 0);
-                                cell.shape.draw(canvas);
-                                cell.isAlive = false;
-                                //cell.move(canvas);
+                                cell.killCell();
+                                cell.drawCell(canvas);
                             }
                         }
                         else if (cell instanceof FoodCell) {
-                            if (cell.shape.getBounds().intersect(playerCell.shape.getBounds())) {
+                            if (cell.getBounds().intersect(playerCell.getBounds())) {
                                 activity.updateScore(); //TODO change to eatFood which calls updateScore with a param (i.e. updateScore(1)
-                                cell.shape.setBounds(0, 0, 0, 0);
-                                cell.shape.draw(canvas);
-                                cell.isAlive = false;
+                                cell.killCell();
+                                cell.drawCell(canvas);
                             }
                         }
                     }
