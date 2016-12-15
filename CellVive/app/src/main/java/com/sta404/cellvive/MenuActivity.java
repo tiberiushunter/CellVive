@@ -30,9 +30,10 @@ public class MenuActivity extends AppCompatActivity {
         TextView txvRate = (TextView) findViewById(R.id.txtVRate);
         TextView txvAbout = (TextView) findViewById(R.id.txtVAbout);
 
+        Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
 
-        title.setTypeface(tf);
+        title.setTypeface(tfTitle);
         txvNewGame.setTypeface(tf);
         txvHighScore.setTypeface(tf);
         txvRate.setTypeface(tf);

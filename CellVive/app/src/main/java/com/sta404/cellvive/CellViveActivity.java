@@ -15,7 +15,13 @@ import android.widget.TextView;
 public class CellViveActivity extends AppCompatActivity {
 
     BoardSurfaceView board;
-    RelativeLayout content, menu;
+    RelativeLayout content;
+
+    TextView txtVScore;
+    TextView txtVLives;
+    int score = 0;
+    int lives = 3;
+
 
     public float oldX, oldY, newX, newY;
 
@@ -52,16 +58,56 @@ public class CellViveActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cell_vive);
 
         board = new BoardSurfaceView(this);
+        board.setActivity(this);
+
         content = (RelativeLayout)findViewById(R.id.content);
         content.addView(board);
+
+        txtVScore = (TextView) findViewById(R.id.txtVScore);
+        txtVLives = (TextView) findViewById(R.id.txtVLives);
+
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
+
+         txtVScore.setTypeface(tf);
+         txtVLives.setTypeface(tf);
+
+        txtVScore.setText("Score: " + score);
+        txtVLives.setText("Lives: " + lives);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(listener,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
+    }
 
+    public void updateScore(){
+        score++;
+        runOnUiThread(new Runnable(){
 
+            @Override
+            public void run() {
+                txtVScore.setText("Score: " + score);
+            }
+        });
+    }
 
+    public void updateLives(){
+        lives--;
+        runOnUiThread(new Runnable(){
 
+            @Override
+            public void run() {
+                txtVLives.setText("Lives: " + lives);
+            }
+        });
 
     }
+
+    public int getScore(){
+        return score;
+    }
+
+    public int getLives(){
+        return lives;
+    }
+
 }
