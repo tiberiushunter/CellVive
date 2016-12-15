@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.SurfaceHolder;
@@ -41,7 +42,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         cells.add(new EnemyCell(500,754,10,10));
         cells.add(new EnemyCell(1000,10,10,10));
 
-        playerCell = new PlayerCell(500,500,10,10);
+        playerCell = new PlayerCell(500,500);
 
         getScreenDpi(context);
         playerCell.playerRadius = getPixelFromDpi(context, screenDpi);
@@ -57,10 +58,14 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
             }
             Canvas canvas = holder.lockCanvas();
             if(canvas != null) {
+
                 canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
                 for (Cell cell : cells) {
                     cell.move(canvas);
-                    //playerCell.move(canvas);
+                    if(cell instanceof EnemyCell)
+                       if(cell.shape.getBounds().intersect(playerCell.shape.getBounds())){
+                           stop();
+                       }
                 }
                 holder.unlockCanvasAndPost(canvas);
             }

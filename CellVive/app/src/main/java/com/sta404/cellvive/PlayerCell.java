@@ -20,14 +20,15 @@ public class PlayerCell extends Cell{
     float playerRadius;
 
 
-    public PlayerCell(float x, float y, float dx, float dy){
-        super(x,y,dx,dy);
+    public PlayerCell(float x, float y){
         this.x = x;
         this.y = y;
-        this.dx = dx;
-        this.dy = dy;
 
-        p.setColor(Color.rgb(116,172,35));
+        shape = new ShapeDrawable(new OvalShape());
+        shape.getPaint().setColor(0xff74AC23); //TODO change this value
+        shape.setBounds((int)x,(int)y,(int)(x+200f),(int)(y+200f)); //TODO hard-coded value for cells
+
+       // p.setColor(Color.rgb(116,172,35));
     }
 
     @Override
@@ -39,13 +40,13 @@ public class PlayerCell extends Cell{
         newX = newX * 10;
         newY = newY * 10;
 
-        if (newX + oldX >= dW-50 || newX + oldX <= 50){
+        if (newX + oldX > dW || newX + oldX <0){
             newX = oldX;
         }else{
             newX= newX + oldX;
         }
 
-        if (newY + oldY >= dH-50 || newY + oldY <= 50){
+        if (newY + oldY > dH || newY + oldY <0){
             newY = oldY;
         }else{
             newY= newY + oldY;
@@ -57,10 +58,11 @@ public class PlayerCell extends Cell{
         oldX = newX;
         oldY = newY;
 
-        canvas.drawCircle(x, y, playerRadius, p);
-        canvas.drawText(" " + (int)x, 100,100, p);
+       // canvas.drawCircle(x, y, playerRadius, p);
+       // canvas.drawRect(x, y, (x+50f),(y+50f), p);
+        shape.setBounds((int)x,(int)y,(int)x+50,(int)y+50);
+        shape.draw(canvas);
+        // canvas.drawText(" " + (int)x, 100,100, p);
     }
-
-
 
 }

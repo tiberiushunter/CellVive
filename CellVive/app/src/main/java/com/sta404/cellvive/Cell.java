@@ -9,7 +9,7 @@ import android.graphics.drawable.shapes.OvalShape;
  * Cell SuperClass
  */
 
-public class Cell {
+public abstract class Cell {
 /*
 x = positional X
 y = positional Y
@@ -19,12 +19,5 @@ dy = width
     protected float x,y,dx,dy;
     protected ShapeDrawable shape;
 
-    public Cell(float x, float y, float dx, float dy){
-
-    }
-
-    protected void move(Canvas canvas){
-
-    }
-
+    protected abstract void move(Canvas canvas);
 }
