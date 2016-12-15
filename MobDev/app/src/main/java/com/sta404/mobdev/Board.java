@@ -15,9 +15,8 @@ import android.view.View;
 public class Board extends View{
 
         private float x,y;
-        Paint p = new Paint();
-        float screenDpi;
-        float playerRadius;
+
+
 
         public Board(Context context) {
             super(context);
@@ -46,15 +45,7 @@ public class Board extends View{
             this.y = y;
         }
 
-        public void getScreenDpi(Context context){
-            screenDpi = context.getApplicationContext().getResources().getDisplayMetrics().densityDpi;
-        }
 
-    public static float getPixelFromDpi(Context context, float screenDpi) {
-        DisplayMetrics dM = context.getResources().getDisplayMetrics();
-
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, screenDpi, dM) / 80;
-    }
 
 
     }

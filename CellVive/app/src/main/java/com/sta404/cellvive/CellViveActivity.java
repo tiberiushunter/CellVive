@@ -12,24 +12,24 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class CellVive extends AppCompatActivity {
+public class CellViveActivity extends AppCompatActivity {
 
     BoardSurfaceView board;
     RelativeLayout content, menu;
 
     public float oldX, oldY, newX, newY;
+
     SensorManager sensorManager;
     Sensor accelerometer;
-
     SensorEventListener listener = new SensorEventListener(){
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
             if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-
-                newX = sensorEvent.values[1];
-                newY = sensorEvent.values[0];
+                if (board.playerCell != null) {
+                    board.playerCell.newX = sensorEvent.values[1];
+                    board.playerCell.newY = sensorEvent.values[0];
+                }
             }
-            //updatePlayerLocation();
         }
 
         @Override
@@ -37,6 +37,7 @@ public class CellVive extends AppCompatActivity {
 
         }
     };
+
 
 
     @Override
@@ -53,32 +54,16 @@ public class CellVive extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         board = new BoardSurfaceView(this);
-        content = (RelativeLayout)findViewById(R.id.menu);
-
-        oldX = getScreenWidth() / 2;
-        oldY = getScreenHeight() / 2;
+        content = (RelativeLayout)findViewById(R.id.content);
+        content.addView(board);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         sensorManager.registerListener(listener,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
 
 
-        TextView tx = (TextView)findViewById(R.id.titleText);
 
-        Typeface tf = Typeface.createFromAsset(getAssets(),  "fonts/scifi2k2.ttf");
-        tx.setTypeface(tf);
 
-      //  content.addView(board);
 
     }
-
-    public static int getScreenHeight() {
-        return Resources.getSystem().getDisplayMetrics().heightPixels;
-    }
-
-    public static int getScreenWidth() {
-        return Resources.getSystem().getDisplayMetrics().widthPixels;
-    }
-
-
 }
