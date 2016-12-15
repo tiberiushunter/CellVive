@@ -37,11 +37,26 @@
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
+            android:name=".RateActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            android:theme="@style/FullscreenTheme">
+        </activity>
+        <activity
             android:name=".QuestionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            android:theme="@style/FullscreenTheme">
         </activity>
     </application>
 </manifest>
+<!--  TODO old transparent code        android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" > -->

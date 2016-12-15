@@ -43,16 +43,20 @@ public class QuestionActivity extends Activity {
 
 
     public void onClickAnswerA(View v) {
-        finish();
+        setResult(-1);
+        //finish();
     }
     public void onClickAnswerB(View v) {
-        finish();
+        setResult(0);
+       // finish();
     }
     public void onClickAnswerC(View v) {
-        finish();
+        setResult(0);
+       // finish();
     }
     public void onClickAnswerD(View v) {
-        finish();
+        setResult(0);
+       // finish();
     }
 
 }

@@ -9,13 +9,12 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sta404.cellvive.MenuActivity"
-    android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-    android:background="#c0000000">
+    android:background="#000000">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/question"
+        android:id="@+id/contentQuestion"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 

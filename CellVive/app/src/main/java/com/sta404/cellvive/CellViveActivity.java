@@ -61,7 +61,7 @@ public class CellViveActivity extends Activity {
         board = new BoardSurfaceView(this);
         board.setActivity(this);
 
-        content = (RelativeLayout)findViewById(R.id.content);
+        content = (RelativeLayout)findViewById(R.id.contentCellVive);
         content.addView(board);
 
         txtVScore = (TextView) findViewById(R.id.txtVScore);

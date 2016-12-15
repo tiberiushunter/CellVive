@@ -14,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/menu"
+        android:id="@+id/contentMenu"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
@@ -26,6 +26,8 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewStart"
+            android:onClick="onClickAbout"
+            android:clickable="true"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="107dp"
@@ -39,6 +41,8 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewEnd"
+            android:onClick="onClickRate"
+            android:clickable="true"
             android:layout_alignBaseline="@+id/txtVAbout"
             android:layout_alignBottom="@+id/txtVAbout"
             android:layout_alignParentStart="true"

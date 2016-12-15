@@ -54,6 +54,15 @@ public class MenuActivity extends Activity {
         Intent intent = new Intent(this, HighScoreActivity.class);
         this.startActivity(intent);
     }
+    public void onClickRate(View v) {
+        Intent intent = new Intent(this, RateActivity.class);
+        this.startActivity(intent);
+    }
+    public void onClickAbout(View v) {
+        Intent intent = new Intent(this, AboutActivity.class);
+        this.startActivity(intent);
+    }
+
 
 
     @Override

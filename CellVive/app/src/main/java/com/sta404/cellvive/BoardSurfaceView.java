@@ -98,8 +98,11 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
                         if(cell.getBounds().intersect(playerCell.getBounds())){
                             if(cell instanceof EnemyCell){
 
-                                Intent intent = new Intent(getContext(), QuestionActivity.class);
-                                getContext().startActivity(intent);
+                                //TODO Implementation of the quiz code
+                               //Intent intent = new Intent(getContext(), QuestionActivity.class);
+                               //getContext().startActivity(intent);
+
+                                //thread.interrupt();
                                 //TODO pause thread
 
                                 activity.updateLives();
