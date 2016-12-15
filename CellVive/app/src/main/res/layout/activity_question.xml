@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.sta404.cellvive.MenuActivity"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+    android:background="#c0000000">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/question"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:text="Wrong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAnswerD"
+            android:textSize="14pt"
+            android:textColor="#ff0000"
+            android:textAlignment="viewStart"
+            android:onClick="onClickAnswerD"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="107dp"
+            android:layout_marginBottom="39dp" />
+
+        <Button
+            android:text="Wrong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAnswerC"
+            android:textSize="14pt"
+            android:textColor="#ff0000"
+            android:textAlignment="viewEnd"
+            android:onClick="onClickAnswerC"
+            android:clickable="true"
+            android:layout_alignBaseline="@+id/btnAnswerD"
+            android:layout_alignBottom="@+id/btnAnswerD"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="133dp" />
+
+        <Button
+            android:text="Wrong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAnswerB"
+            android:textSize="14pt"
+            android:textColor="#ff0000"
+            android:textAlignment="viewStart"
+            android:onClick="onClickAnswerB"
+            android:clickable="true"
+            android:layout_marginEnd="64dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/btnAnswerA" />
+
+        <Button
+            android:text="Correct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAnswerA"
+            android:textSize="14pt"
+            android:textColor="#ff0000"
+            android:textAlignment="viewEnd"
+            android:onClick="onClickAnswerA"
+            android:clickable="true"
+            android:layout_marginBottom="25dp"
+            android:layout_above="@+id/btnAnswerC"
+            android:layout_alignEnd="@+id/btnAnswerC"
+            android:layout_alignStart="@+id/btnAnswerC" />
+
+        <TextView
+            android:text="Which of these is the correct answer?"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/questionText"
+            android:textColor="#00ff00"
+            android:textSize="36sp"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="14dp" />
+
+    </RelativeLayout>
+</RelativeLayout>

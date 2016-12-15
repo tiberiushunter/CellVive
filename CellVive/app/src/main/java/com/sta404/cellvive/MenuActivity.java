@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class MenuActivity extends Activity {
+    TextView txtVTitle, txtVNewGame, txtVHighScore, txtVRate, txtVAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,24 +28,25 @@ public class MenuActivity extends Activity {
 
 
 
-        TextView title = (TextView) findViewById(R.id.titleText);
-        TextView txvNewGame = (TextView) findViewById(R.id.txtVNewGame);    //TODO proper names
-        TextView txvHighScore = (TextView) findViewById(R.id.txtVHighScore);
-        TextView txvRate = (TextView) findViewById(R.id.txtVRate);
-        TextView txvAbout = (TextView) findViewById(R.id.txtVAbout);
+        txtVTitle = (TextView) findViewById(R.id.titleText);
+        txtVNewGame = (TextView) findViewById(R.id.txtVNewGame);    //TODO proper names
+        txtVHighScore = (TextView) findViewById(R.id.txtVHighScore);
+        txtVRate = (TextView) findViewById(R.id.txtVRate);
+        txtVAbout = (TextView) findViewById(R.id.txtVAbout);
 
         Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
 
-        title.setTypeface(tfTitle);
-        txvNewGame.setTypeface(tf);
-        txvHighScore.setTypeface(tf);
-        txvRate.setTypeface(tf);
-        txvAbout.setTypeface(tf);
+        txtVTitle.setTypeface(tfTitle);
+        txtVNewGame.setTypeface(tf);
+        txtVHighScore.setTypeface(tf);
+        txtVRate.setTypeface(tf);
+        txtVAbout.setTypeface(tf);
 
     }
 
     public void onClickPlay(View v) {
+       // txtVNewGame.setTextSize(80f); //TODO Animation upon clicking the options
         Intent intent = new Intent(this, CellViveActivity.class);
         this.startActivity(intent);
     }

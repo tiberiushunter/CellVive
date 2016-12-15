@@ -1,6 +1,7 @@
 package com.sta404.cellvive;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -91,25 +92,21 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
             if(canvas != null) {
 
                 canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
-                for (Cell cell : cells) {
+                for (Cell cell : cells) { //TODO hmmm something about removing the item rather than killing it maybe?
                     if (cell.isAlive()) {
                         cell.move(canvas);
-                        //TODO Potenitally put the cell.shape.getBounds... etc bit at the top, work out if thats faster
-                        if (cell instanceof EnemyCell) {
-                            if (cell.getBounds().intersect(playerCell.getBounds())) {
-                                //try {
-                                //    thread.sleep(1000);
-                                //}catch (InterruptedException e) {
-                                //    // TODO Auto-generated catch block
-                                //    e.printStackTrace();
-                                //}
+                        if(cell.getBounds().intersect(playerCell.getBounds())){
+                            if(cell instanceof EnemyCell){
+
+                                Intent intent = new Intent(getContext(), QuestionActivity.class);
+                                getContext().startActivity(intent);
+                                //TODO pause thread
+
                                 activity.updateLives();
                                 cell.killCell();
                                 cell.drawCell(canvas);
                             }
-                        }
-                        else if (cell instanceof FoodCell) {
-                            if (cell.getBounds().intersect(playerCell.getBounds())) {
+                            else if (cell instanceof FoodCell){
                                 activity.updateScore(); //TODO change to eatFood which calls updateScore with a param (i.e. updateScore(1)
                                 cell.killCell();
                                 cell.drawCell(canvas);
@@ -117,7 +114,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
                         }
                     }
                 }
-                    holder.unlockCanvasAndPost(canvas);
+                holder.unlockCanvasAndPost(canvas);
             }
         }
     }
