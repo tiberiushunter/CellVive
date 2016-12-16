@@ -8,7 +8,7 @@ import android.graphics.drawable.ShapeDrawable;
  * Cell SuperClass
  */
 
-public class Cell {
+public abstract class Cell {
 
     protected float x,y,dx,dy;
     protected ShapeDrawable shape;
@@ -23,9 +23,7 @@ public class Cell {
         alive = false;
     }
 
-    public void move(Canvas canvas){
-
-    }
+    public abstract void move(Canvas canvas);
 
     public void drawCell(Canvas canvas){
         shape.draw(canvas);

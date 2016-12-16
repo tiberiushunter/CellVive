@@ -15,12 +15,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  Name: HighScoreActivity
  */
 public class HighScoreActivity extends Activity {
-    ArrayList<String> scoresList = new ArrayList<String>();
+    List<String> scoresList = new ArrayList<String>();
     TextView txtPosition1,
             txtPosition2,
             txtPosition3,
@@ -80,8 +81,18 @@ public class HighScoreActivity extends Activity {
 
         readScoresFromFile("highscores.txt");
         Collections.sort(scoresList);
-
         generateHighScoreTable();
+        scoresList.clear();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        readScoresFromFile("highscores.txt");
+        Collections.sort(scoresList);
+        generateHighScoreTable();
+        scoresList.clear();
     }
 
     public void readScoresFromFile(String fileName) {
