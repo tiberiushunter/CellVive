@@ -36,7 +36,7 @@ public class CellViveActivity extends Activity {
                 if (board.playerCell != null) {
 
                     board.playerCell.setNewX(sensorEvent.values[1]);
-                    board.playerCell.setNewY(sensorEvent.values[0]-5);
+                    board.playerCell.setNewY(sensorEvent.values[0]); //-5
                 }
             }
         }

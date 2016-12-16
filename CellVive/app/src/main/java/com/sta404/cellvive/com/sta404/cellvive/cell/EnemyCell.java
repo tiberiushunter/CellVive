@@ -9,7 +9,6 @@ import android.graphics.drawable.shapes.OvalShape;
  */
 
 public class EnemyCell extends Cell{
-
     public EnemyCell(float x, float y, float dx, float dy){
         this.x = x;
         this.y = y;
@@ -24,6 +23,8 @@ public class EnemyCell extends Cell{
     @Override
     public void move(Canvas canvas) {
         //super.move(canvas); TODO Might not be needed but hey-ho!
+
+
         x+=dx;
         y+=dy;
         if(x>canvas.getWidth() || x<0)

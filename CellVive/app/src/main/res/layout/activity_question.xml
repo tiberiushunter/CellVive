@@ -13,69 +13,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/contentQuestion"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
-
-        <Button
-            android:text="Wrong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAnswerD"
-            android:textSize="14pt"
-            android:textColor="#ff0000"
-            android:textAlignment="viewStart"
-            android:onClick="onClickAnswerD"
-            android:clickable="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="107dp"
-            android:layout_marginBottom="39dp" />
-
-        <Button
-            android:text="Wrong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAnswerC"
-            android:textSize="14pt"
-            android:textColor="#ff0000"
-            android:textAlignment="viewEnd"
-            android:onClick="onClickAnswerC"
-            android:clickable="true"
-            android:layout_alignBaseline="@+id/btnAnswerD"
-            android:layout_alignBottom="@+id/btnAnswerD"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="133dp" />
-
-        <Button
-            android:text="Wrong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAnswerB"
-            android:textSize="14pt"
-            android:textColor="#ff0000"
-            android:textAlignment="viewStart"
-            android:onClick="onClickAnswerB"
-            android:clickable="true"
-            android:layout_marginEnd="64dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/btnAnswerA" />
-
-        <Button
-            android:text="Correct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnAnswerA"
-            android:textSize="14pt"
-            android:textColor="#ff0000"
-            android:textAlignment="viewEnd"
-            android:onClick="onClickAnswerA"
-            android:clickable="true"
-            android:layout_marginBottom="25dp"
-            android:layout_above="@+id/btnAnswerC"
-            android:layout_alignEnd="@+id/btnAnswerC"
-            android:layout_alignStart="@+id/btnAnswerC" />
 
         <TextView
             android:text="Which of these is the correct answer?"
@@ -88,6 +29,99 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="14dp" />
-
     </RelativeLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/contentQuestion"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:baselineAligned="false">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp">
+                        <Button
+                            android:text="Correct"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/btnAnswerA"
+                            android:textSize="14pt"
+                            android:textColor="#000000"
+                            android:onClick="onClickAnswerA"
+                            android:clickable="true" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp">
+                        <Button
+                            android:text="Wrong"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/btnAnswerB"
+                            android:textSize="14pt"
+                            android:textColor="#000000"
+                            android:onClick="onClickAnswerB"
+                            android:clickable="true" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:baselineAligned="false">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp">
+                        <Button
+                            android:text="Wrong"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/btnAnswerC"
+                            android:textSize="14pt"
+                            android:textColor="#000000"
+                            android:onClick="onClickAnswerC"
+                            android:clickable="true" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_margin="5dp">
+                        <Button
+                            android:text="Wrong"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/btnAnswerD"
+                            android:textSize="14pt"
+                            android:textColor="#000000"
+                            android:onClick="onClickAnswerD"
+                            android:clickable="true" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </GridLayout>
 </RelativeLayout>
