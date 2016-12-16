@@ -47,4 +47,16 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:text="Created by Sam Welek - 2016"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/aboutText"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/contentAbout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

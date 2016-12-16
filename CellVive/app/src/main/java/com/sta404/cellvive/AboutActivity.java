@@ -26,12 +26,14 @@ public class AboutActivity extends Activity {
 
         TextView title = (TextView) findViewById(R.id.titleText);
         TextView txtVBack = (TextView) findViewById(R.id.txtVBack);
+        TextView aboutText = (TextView) findViewById(R.id.aboutText);
 
         Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
 
         title.setTypeface(tfTitle);
         txtVBack.setTypeface(tf);
+        aboutText.setTypeface(tf);
 
     }
 

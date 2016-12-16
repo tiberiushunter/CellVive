@@ -156,7 +156,6 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         while(true){
             try {
                 thread.join();
-                System.out.println("SHIT");
                 break;
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
