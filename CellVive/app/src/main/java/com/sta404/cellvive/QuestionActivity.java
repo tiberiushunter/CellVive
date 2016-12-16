@@ -56,10 +56,9 @@ public class QuestionActivity extends Activity {
         btnAnswerC = (Button) findViewById(R.id.btnAnswerC);
         btnAnswerD = (Button) findViewById(R.id.btnAnswerD);
 
-        Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
 
-        txtVQuestion.setTypeface(tfTitle);
+        txtVQuestion.setTypeface(tf);
         btnAnswerA.setTypeface(tf);
         btnAnswerB.setTypeface(tf);
         btnAnswerC.setTypeface(tf);

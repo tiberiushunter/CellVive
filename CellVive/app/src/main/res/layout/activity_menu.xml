@@ -16,7 +16,8 @@
         android:layout_height="match_parent"
         android:id="@+id/contentMenu"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true">
 
         <TextView
             android:text="About"
@@ -26,12 +27,15 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewStart"
+            android:gravity="start"
             android:onClick="onClickAbout"
             android:clickable="true"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="107dp"
-            android:layout_marginBottom="39dp" />
+            android:layout_marginBottom="39dp"
+            android:layout_marginRight="107dp"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:text="Rate"
@@ -41,12 +45,15 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewEnd"
+            android:gravity="end"
             android:onClick="onClickRate"
             android:clickable="true"
             android:layout_alignBaseline="@+id/txtVAbout"
             android:layout_alignBottom="@+id/txtVAbout"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="133dp" />
+            android:layout_marginStart="133dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="133dp" />
 
         <TextView
             android:text="High Scores"
@@ -56,11 +63,14 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewStart"
+            android:gravity="start"
             android:onClick="onClickHighScore"
             android:clickable="true"
             android:layout_marginEnd="64dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/txtVNewGame" />
+            android:layout_alignTop="@+id/txtVNewGame"
+            android:layout_marginRight="64dp"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:text="Play"
@@ -70,12 +80,15 @@
             android:textSize="14pt"
             android:textColor="#ff0000"
             android:textAlignment="viewEnd"
+            android:gravity="end"
             android:onClick="onClickPlay"
             android:clickable="true"
             android:layout_marginBottom="25dp"
             android:layout_above="@+id/txtVRate"
             android:layout_alignEnd="@+id/txtVRate"
-            android:layout_alignStart="@+id/txtVRate" />
+            android:layout_alignStart="@+id/txtVRate"
+            android:layout_alignRight="@+id/txtVRate"
+            android:layout_alignLeft="@+id/txtVRate" />
 
         <TextView
             android:text="Cell Vive"
@@ -87,7 +100,8 @@
             android:textAlignment="center"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="14dp" />
+            android:layout_marginTop="14dp"
+            android:layout_alignParentLeft="true" />
 
     </RelativeLayout>
 </RelativeLayout>

@@ -41,7 +41,7 @@ public class PlayerCell extends Cell{
         oldY = y;
 
         shape = new ShapeDrawable(new OvalShape());
-        shape.getPaint().setColor(0xff0000ff); //TODO change this value
+        shape.getPaint().setColor(0xff00FFff); //TODO change this value
         //shape.setBounds((int)x,(int)y,(int)(x+200f),(int)(y+200f)); //TODO hard-coded value for cells
 
        // p.setColor(Color.rgb(116,172,35));

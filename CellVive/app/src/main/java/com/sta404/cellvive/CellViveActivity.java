@@ -1,6 +1,7 @@
 package com.sta404.cellvive;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -10,9 +11,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CellViveActivity extends Activity {
 
@@ -90,6 +93,7 @@ public class CellViveActivity extends Activity {
                 updateLives();
             }
         }
+        board.isRunning = true;
         board.start(); //TODO pressingback button with 0 lives instead of answering question (or getting it wrong)
     }
 
@@ -106,6 +110,10 @@ public class CellViveActivity extends Activity {
 
     public void updateLives(){
         lives--;
+        if(lives <= 0){
+            toastScore();
+            finish();
+        }
         runOnUiThread(new Runnable(){
 
             @Override
@@ -114,6 +122,21 @@ public class CellViveActivity extends Activity {
             }
         });
      }
+
+    public void toastScore(){
+        runOnUiThread(new Runnable(){
+            @Override
+            public void run() {
+                txtVLives.setText("Lives: " + lives);
+
+                int duration = Toast.LENGTH_SHORT;
+                CharSequence text = "Your Score was " + getScore();
+                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                toast.show();
+
+            }
+        });
+    }
 
     public int getScore(){
         return score;

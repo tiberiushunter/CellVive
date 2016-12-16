@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import com.sta404.cellvive.com.sta404.cellvive.cell.Cell;
 import com.sta404.cellvive.com.sta404.cellvive.cell.EnemyCell;
@@ -27,20 +29,22 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
     boolean isRunning = true;
     Paint p;
     ArrayList<Cell> cells = new ArrayList<Cell>();
+    ArrayList<Cell> newCellsToAdd = new ArrayList<Cell>();
     PlayerCell playerCell;
 
     //Used by FoodCells
     final Random rand = new Random();
 
+    final Handler createFoodHandler = new Handler();
+    final int foodDelay = 500;
+
+    final Handler createEnemyHandler = new Handler();
+    final int enemyDelay = 2000;
+
+    final int screenWidth;
+    final int screenHeight;
+
     CellViveActivity activity;
-
-    public CellViveActivity getActivity() {
-        return activity;
-    }
-
-    public void setActivity(CellViveActivity activity) {
-        this.activity = activity;
-    }
 
     float screenDpi;
     float playerRadius;
@@ -50,12 +54,8 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
 
         //Used to get the screen height and width.
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-        int screenWidth = metrics.widthPixels;
-        int screenHeight = metrics.heightPixels;
-
-
-
-
+        screenWidth = metrics.widthPixels;
+        screenHeight = metrics.heightPixels;
 
         p = new Paint();
         p.setColor(Color.BLACK);
@@ -63,10 +63,35 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         holder = getHolder();
         thread = new Thread(this);
         thread.start();
-        //TODO CHange to dynamic pixels
-        cells.add(new EnemyCell(500,500,10,10));
-        cells.add(new EnemyCell(screenWidth-500,screenHeight/2,10,10));
-        cells.add(new EnemyCell(screenWidth-500/2,screenHeight-500,10,10));
+
+
+        //Adds Food to the board
+        createFoodHandler.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                //if(isRunning){
+                    newCellsToAdd.add(new FoodCell(rand.nextInt(screenWidth),rand.nextInt(screenHeight)));
+                    createFoodHandler.postDelayed(this, foodDelay);
+                //}
+            }
+        }, foodDelay);
+
+        //Adds enemies to the board
+        createEnemyHandler.postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                //if(isRunning) {
+                    newCellsToAdd.add(new EnemyCell(rand.nextInt(screenWidth), rand.nextInt(screenHeight), 5, 5));
+                    createEnemyHandler.postDelayed(this, enemyDelay);
+                //}
+            }
+        }, enemyDelay);
+
+
+        //TODO CHange to dyn amic pixels
+        cells.add(new EnemyCell(500,500,5,5));
+        cells.add(new EnemyCell(screenWidth-500,screenHeight/2,5,5));
+        cells.add(new EnemyCell(screenWidth-500/2,screenHeight-500,5,5));
 
         for(int i = 0; i < 50 ; i++){
             cells.add(new FoodCell(rand.nextInt(screenWidth),rand.nextInt(screenHeight)));
@@ -74,9 +99,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
 
         //Centre's the player on screen
         playerCell = new PlayerCell(screenWidth/2, (screenHeight/2)-100);
-
         cells.add(playerCell);
-
     }
 
     @Override
@@ -85,13 +108,8 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
             if(!holder.getSurface().isValid()){
                 continue;
             }
-            if(activity.getLives() <= 0){
-               // activity.finish(); TODO check if this would also call stop.
-                stop();
-            }
             Canvas canvas = holder.lockCanvas();
             if(canvas != null) {
-
                 canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), p);
                 for (Cell cell : cells) { //TODO hmmm something about removing the item rather than killing it maybe?
                     if (cell.isAlive()) {
@@ -115,10 +133,15 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
                     }
                 }
                 holder.unlockCanvasAndPost(canvas);
+                cells.addAll(newCellsToAdd);
+                newCellsToAdd.clear();
             }
         }
     }
 
+    public void setActivity(CellViveActivity activity) {
+        this.activity = activity;
+    }
 
 
     public void start(){
@@ -132,6 +155,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         while(true){
             try {
                 thread.join();
+                System.out.println("SHIT");
                 break;
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block

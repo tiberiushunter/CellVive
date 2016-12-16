@@ -16,19 +16,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/contentQuestion"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true">
 
         <TextView
             android:text="Which of these is the correct answer?"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/questionText"
-            android:textColor="#00ff00"
+            android:textColor="#ffffff"
             android:textSize="36sp"
             android:textAlignment="center"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="14dp" />
+            android:layout_marginTop="14dp"
+            android:layout_alignParentLeft="true" />
     </RelativeLayout>
     <GridLayout
         android:layout_width="match_parent"
