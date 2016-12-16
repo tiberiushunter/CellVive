@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 public class MenuActivity extends Activity {
-    TextView txtVTitle, txtVNewGame, txtVHighScore, txtVRate, txtVAbout;
+    TextView txtVTitle, txtVNewGame, txtVHighScore, txtVAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +26,9 @@ public class MenuActivity extends Activity {
 
         setContentView(R.layout.activity_menu);
 
-
-
         txtVTitle = (TextView) findViewById(R.id.titleText);
         txtVNewGame = (TextView) findViewById(R.id.txtVNewGame);    //TODO proper names
         txtVHighScore = (TextView) findViewById(R.id.txtVHighScore);
-        txtVRate = (TextView) findViewById(R.id.txtVRate);
         txtVAbout = (TextView) findViewById(R.id.txtVAbout);
 
         Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
@@ -41,7 +38,6 @@ public class MenuActivity extends Activity {
         txtVTitle.setTypeface(tfTitle);
         txtVNewGame.setTypeface(tf);
         txtVHighScore.setTypeface(tf);
-        txtVRate.setTypeface(tf);
         txtVAbout.setTypeface(tf);
 
     }
@@ -55,26 +51,8 @@ public class MenuActivity extends Activity {
         Intent intent = new Intent(this, HighScoreActivity.class);
         this.startActivity(intent);
     }
-    public void onClickRate(View v) {
-        Intent intent = new Intent(this, RateActivity.class);
-        this.startActivity(intent);
-    }
     public void onClickAbout(View v) {
         Intent intent = new Intent(this, AboutActivity.class);
         this.startActivity(intent);
-    }
-
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 }

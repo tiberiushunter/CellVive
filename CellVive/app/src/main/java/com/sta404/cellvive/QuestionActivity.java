@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Random;
 
 public class QuestionActivity extends Activity {
 
@@ -72,18 +73,25 @@ public class QuestionActivity extends Activity {
         String line;
         InputStream inputStream = null;
         BufferedReader bufferedReader = null;
+        Random rand = new Random();
+        int randLine = rand.nextInt(8);
+        int currentLine = 0;
 
         try{
             inputStream = am.open("files/questions.txt");
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            System.out.println(randLine);
             while ((line = bufferedReader.readLine()) != null) {
-                String[] text = line.split(",");
-                txtVQuestion.setText(text[0]);
-                btnAnswerA.setText(text[1]);
-                btnAnswerB.setText(text[2]);
-                btnAnswerC.setText(text[3]);
-                btnAnswerD.setText(text[4]);
-                correctAnswer = Integer.parseInt(text[5]); //TODO RED FLAG
+                if(currentLine == randLine) {
+                    String[] text = line.split(",");
+                    txtVQuestion.setText(text[0]);
+                    btnAnswerA.setText(text[1]);
+                    btnAnswerB.setText(text[2]);
+                    btnAnswerC.setText(text[3]);
+                    btnAnswerD.setText(text[4]);
+                    correctAnswer = Integer.parseInt(text[5]);
+                }
+                currentLine++;
             }
         } catch (FileNotFoundException e){
             Log.d("ID", e.getMessage());

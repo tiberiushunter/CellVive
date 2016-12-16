@@ -12,10 +12,15 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class CellViveActivity extends Activity {
 
@@ -122,6 +127,7 @@ public class CellViveActivity extends Activity {
         lives--;
         if(lives <= 0){
             toastScore();
+            saveToFile(getScore() + "\n","highscores.txt");
             finish();
         }
         runOnUiThread(new Runnable(){
@@ -147,6 +153,20 @@ public class CellViveActivity extends Activity {
             }
         });
     }
+
+    public void saveToFile(String fileContents, String fileName) {
+        Context context = this;
+        Log.d("ID","file dir = " + context.getFilesDir());
+        try {
+            File fp = new File(context.getFilesDir(), fileName);
+            FileWriter out = new FileWriter(fp, true);
+            out.write(fileContents);
+            out.close();
+        } catch (IOException e) {
+            Log.d("Me","file error:" + e);
+        }
+    }
+
 
     public int getScore(){
         return score;
