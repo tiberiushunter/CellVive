@@ -86,6 +86,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
                 continue;
             }
             if(activity.getLives() <= 0){
+               // activity.finish(); TODO check if this would also call stop.
                 stop();
             }
             Canvas canvas = holder.lockCanvas();
@@ -97,17 +98,13 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
                         cell.move(canvas);
                         if(cell.getBounds().intersect(playerCell.getBounds())){
                             if(cell instanceof EnemyCell){
-
                                 //TODO Implementation of the quiz code
-                               //Intent intent = new Intent(getContext(), QuestionActivity.class);
-                               //getContext().startActivity(intent);
+                                Intent intent = new Intent(activity, QuestionActivity.class);
+                                activity.startActivityForResult(intent, 1);
 
-                                //thread.interrupt();
-                                //TODO pause thread
-
-                                activity.updateLives();
                                 cell.killCell();
                                 cell.drawCell(canvas);
+                                isRunning = false;
                             }
                             else if (cell instanceof FoodCell){
                                 activity.updateScore(); //TODO change to eatFood which calls updateScore with a param (i.e. updateScore(1)
@@ -121,6 +118,8 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
             }
         }
     }
+
+
 
     public void start(){
         isRunning = true;

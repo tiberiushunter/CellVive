@@ -1,6 +1,7 @@
 package com.sta404.cellvive;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
@@ -80,6 +81,20 @@ public class CellViveActivity extends Activity {
         sensorManager.registerListener(listener,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println("HERE Request Code: " + requestCode);
+        System.out.println("AND HERE Result Code: " + resultCode);
+        if(requestCode == 1){
+            if(resultCode == Activity.RESULT_CANCELED){
+                updateLives();
+            }
+
+        }
+        board.start();
+    }
+
     public void updateScore(){
         score++;
         runOnUiThread(new Runnable(){
@@ -100,8 +115,7 @@ public class CellViveActivity extends Activity {
                 txtVLives.setText("Lives: " + lives);
             }
         });
-
-    }
+     }
 
     public int getScore(){
         return score;

@@ -1,6 +1,7 @@
 package com.sta404.cellvive;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -38,25 +39,24 @@ public class QuestionActivity extends Activity {
         btnAnswerB.setTypeface(tf);
         btnAnswerC.setTypeface(tf);
         btnAnswerD.setTypeface(tf);
-
     }
 
 
     public void onClickAnswerA(View v) {
-        setResult(-1);
-        //finish();
+        setResult(Activity.RESULT_OK);
+        finish();
     }
     public void onClickAnswerB(View v) {
-        setResult(0);
-       // finish();
+        setResult(Activity.RESULT_CANCELED);
+        finish();
     }
     public void onClickAnswerC(View v) {
-        setResult(0);
-       // finish();
+        setResult(Activity.RESULT_CANCELED);
+        finish();
     }
     public void onClickAnswerD(View v) {
-        setResult(0);
-       // finish();
+        setResult(Activity.RESULT_CANCELED);
+        finish();
     }
 
 }

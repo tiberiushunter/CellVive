@@ -37,6 +37,7 @@ public class MenuActivity extends Activity {
         Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
 
+        //TODO for each TextView, set typeface
         txtVTitle.setTypeface(tfTitle);
         txtVNewGame.setTypeface(tf);
         txtVHighScore.setTypeface(tf);
