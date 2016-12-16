@@ -90,7 +90,7 @@ public class CellViveActivity extends Activity {
                 updateLives();
             }
         }
-        board.start(); //TODO pressingback button instead of answering question
+        board.start(); //TODO pressingback button with 0 lives instead of answering question (or getting it wrong)
     }
 
     public void updateScore(){

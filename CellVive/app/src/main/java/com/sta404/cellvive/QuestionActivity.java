@@ -1,12 +1,26 @@
 package com.sta404.cellvive;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class QuestionActivity extends Activity {
 
@@ -19,6 +33,9 @@ public class QuestionActivity extends Activity {
 
     //A = 1 ... D = 4
     int correctAnswer = 2;
+
+    TextView txtVQuestion;
+    Button btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +50,11 @@ public class QuestionActivity extends Activity {
 
         setContentView(R.layout.activity_question);
 
-        TextView txtVQuestion = (TextView) findViewById(R.id.questionText);
-        Button btnAnswerA = (Button) findViewById(R.id.btnAnswerA);
-        Button btnAnswerB = (Button) findViewById(R.id.btnAnswerB);
-        Button btnAnswerC = (Button) findViewById(R.id.btnAnswerC);
-        Button btnAnswerD = (Button) findViewById(R.id.btnAnswerD);
+        txtVQuestion = (TextView) findViewById(R.id.questionText);
+        btnAnswerA = (Button) findViewById(R.id.btnAnswerA);
+        btnAnswerB = (Button) findViewById(R.id.btnAnswerB);
+        btnAnswerC = (Button) findViewById(R.id.btnAnswerC);
+        btnAnswerD = (Button) findViewById(R.id.btnAnswerD);
 
         Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
@@ -48,40 +65,104 @@ public class QuestionActivity extends Activity {
         btnAnswerC.setTypeface(tf);
         btnAnswerD.setTypeface(tf);
 
-        txtVQuestion.setText(question);
-        btnAnswerA.setText(answerA);
-        btnAnswerB.setText(answerB);
-        btnAnswerC.setText(answerC);
-        btnAnswerD.setText(answerD);
+        generateQuestion();
     }
 
+    public void generateQuestion(){
+        AssetManager am = getAssets();
+        String line;
+        InputStream inputStream = null;
+        BufferedReader bufferedReader = null;
+
+        try{
+            inputStream = am.open("files/questions.txt");
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] text = line.split(",");
+                txtVQuestion.setText(text[0]);
+                btnAnswerA.setText(text[1]);
+                btnAnswerB.setText(text[2]);
+                btnAnswerC.setText(text[3]);
+                btnAnswerD.setText(text[4]);
+                correctAnswer = Integer.parseInt(text[5]); //TODO RED FLAG
+            }
+        } catch (FileNotFoundException e){
+            Log.d("ID", e.getMessage());
+        } catch (IOException e) {
+            Log.d("ID", e.getMessage());
+        }
+    }
 
     public void onClickAnswerA(View v) {
-        if(correctAnswer == 1)
-            setResult(Activity.RESULT_OK);
-        else
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        if(correctAnswer == 1){
+            CharSequence text = "Correct!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+            setResult(Activity.RESULT_OK);}
+        else {
+            CharSequence text = "Incorrect!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
             setResult(Activity.RESULT_CANCELED);
+        }
         finish();
     }
     public void onClickAnswerB(View v) {
-        if(correctAnswer == 2)
-            setResult(Activity.RESULT_OK);
-        else
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        if(correctAnswer == 2){
+            CharSequence text = "Correct!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+            setResult(Activity.RESULT_OK);}
+        else {
+            CharSequence text = "Incorrect!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
             setResult(Activity.RESULT_CANCELED);
+        }
         finish();
     }
     public void onClickAnswerC(View v) {
-        if(correctAnswer == 3)
-            setResult(Activity.RESULT_OK);
-        else
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        if(correctAnswer == 3){
+            CharSequence text = "Correct!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+            setResult(Activity.RESULT_OK);}
+        else {
+            CharSequence text = "Incorrect!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
             setResult(Activity.RESULT_CANCELED);
+        }
         finish();
     }
     public void onClickAnswerD(View v) {
-        if(correctAnswer == 4)
-            setResult(Activity.RESULT_OK);
-        else
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        if(correctAnswer == 4){
+            CharSequence text = "Correct!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+            setResult(Activity.RESULT_OK);}
+        else {
+            CharSequence text = "Incorrect!";
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
             setResult(Activity.RESULT_CANCELED);
+        }
         finish();
     }
 

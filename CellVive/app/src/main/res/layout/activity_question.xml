@@ -58,7 +58,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/btnAnswerA"
-                            android:textSize="14pt"
+                            android:textSize="14sp"
                             android:textColor="#000000"
                             android:onClick="onClickAnswerA"
                             android:clickable="true" />
@@ -73,7 +73,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/btnAnswerB"
-                            android:textSize="14pt"
+                            android:textSize="14sp"
                             android:textColor="#000000"
                             android:onClick="onClickAnswerB"
                             android:clickable="true" />
@@ -100,7 +100,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/btnAnswerC"
-                            android:textSize="14pt"
+                            android:textSize="14sp"
                             android:textColor="#000000"
                             android:onClick="onClickAnswerC"
                             android:clickable="true" />
@@ -115,7 +115,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/btnAnswerD"
-                            android:textSize="14pt"
+                            android:textSize="14sp"
                             android:textColor="#000000"
                             android:onClick="onClickAnswerD"
                             android:clickable="true" />
