@@ -85,15 +85,12 @@ public class CellViveActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("HERE Request Code: " + requestCode);
-        System.out.println("AND HERE Result Code: " + resultCode);
         if(requestCode == 1){
             if(resultCode == Activity.RESULT_CANCELED){
                 updateLives();
             }
-
         }
-        board.start();
+        board.start(); //TODO pressingback button instead of answering question
     }
 
     public void updateScore(){
