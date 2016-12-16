@@ -10,6 +10,16 @@ import android.widget.TextView;
 
 public class QuestionActivity extends Activity {
 
+    String question = "Which of these is an animal?";
+
+    String answerA = "Cactus";
+    String answerB = "Bear";
+    String answerC = "Tree";
+    String answerD = "Mushroom";
+
+    //A = 1 ... D = 4
+    int correctAnswer = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +33,7 @@ public class QuestionActivity extends Activity {
 
         setContentView(R.layout.activity_question);
 
-
-
-        TextView question = (TextView) findViewById(R.id.questionText);
+        TextView txtVQuestion = (TextView) findViewById(R.id.questionText);
         Button btnAnswerA = (Button) findViewById(R.id.btnAnswerA);
         Button btnAnswerB = (Button) findViewById(R.id.btnAnswerB);
         Button btnAnswerC = (Button) findViewById(R.id.btnAnswerC);
@@ -34,28 +42,46 @@ public class QuestionActivity extends Activity {
         Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
 
-        question.setTypeface(tfTitle);
+        txtVQuestion.setTypeface(tfTitle);
         btnAnswerA.setTypeface(tf);
         btnAnswerB.setTypeface(tf);
         btnAnswerC.setTypeface(tf);
         btnAnswerD.setTypeface(tf);
+
+        txtVQuestion.setText(question);
+        btnAnswerA.setText(answerA);
+        btnAnswerB.setText(answerB);
+        btnAnswerC.setText(answerC);
+        btnAnswerD.setText(answerD);
     }
 
 
     public void onClickAnswerA(View v) {
-        setResult(Activity.RESULT_OK);
+        if(correctAnswer == 1)
+            setResult(Activity.RESULT_OK);
+        else
+            setResult(Activity.RESULT_CANCELED);
         finish();
     }
     public void onClickAnswerB(View v) {
-        setResult(Activity.RESULT_CANCELED);
+        if(correctAnswer == 2)
+            setResult(Activity.RESULT_OK);
+        else
+            setResult(Activity.RESULT_CANCELED);
         finish();
     }
     public void onClickAnswerC(View v) {
-        setResult(Activity.RESULT_CANCELED);
+        if(correctAnswer == 3)
+            setResult(Activity.RESULT_OK);
+        else
+            setResult(Activity.RESULT_CANCELED);
         finish();
     }
     public void onClickAnswerD(View v) {
-        setResult(Activity.RESULT_CANCELED);
+        if(correctAnswer == 4)
+            setResult(Activity.RESULT_OK);
+        else
+            setResult(Activity.RESULT_CANCELED);
         finish();
     }
 
