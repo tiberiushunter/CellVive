@@ -63,10 +63,10 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         holder = getHolder();
         thread = new Thread(this);
         thread.start();
-
-        cells.add(new EnemyCell(200,200,10,10));
-        cells.add(new EnemyCell(screenWidth-200,screenHeight/2,10,10));
-        cells.add(new EnemyCell(screenWidth-200/2,screenHeight-200,10,10));
+        //TODO CHange to dynamic pixels
+        cells.add(new EnemyCell(500,500,10,10));
+        cells.add(new EnemyCell(screenWidth-500,screenHeight/2,10,10));
+        cells.add(new EnemyCell(screenWidth-500/2,screenHeight-500,10,10));
 
         for(int i = 0; i < 50 ; i++){
             cells.add(new FoodCell(rand.nextInt(screenWidth),rand.nextInt(screenHeight)));

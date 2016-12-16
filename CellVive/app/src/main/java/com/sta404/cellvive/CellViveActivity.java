@@ -34,8 +34,9 @@ public class CellViveActivity extends Activity {
         public void onSensorChanged(SensorEvent sensorEvent) {
             if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
                 if (board.playerCell != null) {
+
                     board.playerCell.setNewX(sensorEvent.values[1]);
-                    board.playerCell.setNewY(sensorEvent.values[0]);
+                    board.playerCell.setNewY(sensorEvent.values[0]-5);
                 }
             }
         }
