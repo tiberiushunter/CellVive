@@ -1,4 +1,4 @@
-package com.sta404.cellvive;
+package com.sta404.cellvive.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sta404.cellvive.BoardSurfaceView;
+import com.sta404.cellvive.R;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -38,10 +41,10 @@ public class CellViveActivity extends Activity {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
             if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
-                if (board.playerCell != null) {
+                if (board.playerCellExists()) {
 
-                    board.playerCell.setNewX(sensorEvent.values[1]);
-                    board.playerCell.setNewY(sensorEvent.values[0]);
+                    board.setNewXPlayerCell(sensorEvent.values[1]);
+                    board.setNewYPlayerCell(sensorEvent.values[0]);
                 }
             }
         }
@@ -104,7 +107,7 @@ public class CellViveActivity extends Activity {
                 });
             }
         }
-        board.isRunning = true;
+        board.setRunning(true);
         board.start(); //TODO pressingback button with 0 lives instead of answering question (or getting it wrong)
     }
 
@@ -135,6 +138,9 @@ public class CellViveActivity extends Activity {
         });
      }
 
+    /**
+     * Displays a final toast at the end of the game
+     */
     public void toastScore(){
         runOnUiThread(new Runnable(){
             @Override
@@ -150,6 +156,11 @@ public class CellViveActivity extends Activity {
         });
     }
 
+    /**
+     * Saves the score the highscores text file
+     * @param fileContents
+     * @param fileName
+     */
     public void saveToFile(String fileContents, String fileName) {
         Context context = this;
         Log.d("ID","file dir = " + context.getFilesDir());
@@ -163,6 +174,10 @@ public class CellViveActivity extends Activity {
         }
     }
 
+    /**
+     *
+     * @return int score
+     */
     public int getScore(){
         return score;
     }

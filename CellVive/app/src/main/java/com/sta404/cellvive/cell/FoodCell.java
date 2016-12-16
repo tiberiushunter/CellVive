@@ -1,4 +1,4 @@
-package com.sta404.cellvive.com.sta404.cellvive.cell;
+package com.sta404.cellvive.cell;
 
 import android.graphics.Canvas;
 import android.graphics.drawable.ShapeDrawable;
@@ -8,8 +8,6 @@ import android.graphics.drawable.ShapeDrawable;
  */
 
 public class FoodCell extends Cell {
-
-
     public FoodCell(int x, int y){
         this.x = x;
         this.y = y;
@@ -18,9 +16,7 @@ public class FoodCell extends Cell {
         shape.getPaint().setColor(0xff00ff00);
         shape.setBounds(x,y,(x+25),(y+25));
     }
-
     public void move(Canvas canvas){
         shape.draw(canvas);
     }
-
 }

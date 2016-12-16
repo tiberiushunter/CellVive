@@ -9,53 +9,58 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Toast;
 
-import com.sta404.cellvive.com.sta404.cellvive.cell.Cell;
-import com.sta404.cellvive.com.sta404.cellvive.cell.EnemyCell;
-import com.sta404.cellvive.com.sta404.cellvive.cell.FoodCell;
-import com.sta404.cellvive.com.sta404.cellvive.cell.PlayerCell;
+import com.sta404.cellvive.activities.CellViveActivity;
+import com.sta404.cellvive.activities.QuestionActivity;
+import com.sta404.cellvive.cell.Cell;
+import com.sta404.cellvive.cell.EnemyCell;
+import com.sta404.cellvive.cell.FoodCell;
+import com.sta404.cellvive.cell.PlayerCell;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
 /**
- Name: BoardSurfaceView
+ * Name: BoardSurfaceView
+ *
+ * This class extends the SurfaceView class and allows
+ * for more intensive graphic processing due to the it
+ * not running on the UIThread.
  */
 
 public class BoardSurfaceView extends SurfaceView implements Runnable{
-    SurfaceHolder holder;
-    Thread thread;
+    private SurfaceHolder holder;
+    private Thread thread;
 
-    boolean isRunning = true;
+    private boolean isRunning = true;
+    private Paint p;
 
-    Paint p;
+    private ArrayList<Cell> cells = new ArrayList<Cell>();
+    private ArrayList<Cell> newCellsToAdd = new ArrayList<Cell>();
 
-    ArrayList<Cell> cells = new ArrayList<Cell>();
-    ArrayList<Cell> newCellsToAdd = new ArrayList<Cell>();
+    private PlayerCell playerCell;
 
-    PlayerCell playerCell;
+    //Used by Cells to determine location
+    private final Random rand = new Random();
 
-    //Used by FoodCells
-    final Random rand = new Random();
+    private final Handler createFoodHandler = new Handler();
+    private final int foodDelay = 500;
 
-    final Handler createFoodHandler = new Handler();
-    final int foodDelay = 500;
+    private final Handler createEnemyHandler = new Handler();
+    private final int enemyDelay = 3000;
 
-    final Handler createEnemyHandler = new Handler();
-    final int enemyDelay = 3000;
+    private int screenWidth;
+    private int screenHeight;
 
-    final int screenWidth;
-    final int screenHeight;
+    //This is used to refer back to the activity.
+    private CellViveActivity activity;
 
-    CellViveActivity activity;
-
-    public BoardSurfaceView(Context context) {
-        super(context);
+    public BoardSurfaceView(Context c) {
+        super(c);
 
         //Used to get the screen height and width.
-        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        DisplayMetrics metrics = c.getResources().getDisplayMetrics();
         screenWidth = metrics.widthPixels;
         screenHeight = metrics.heightPixels;
 
@@ -75,7 +80,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
             }
         }, foodDelay);
 
-        //Adds enemies to the board
+        //Adds Enemies to the board
         createEnemyHandler.postDelayed(new Runnable(){
             @Override
             public void run() {
@@ -84,6 +89,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
             }
         }, enemyDelay);
 
+        //Adds the initial Food cells
         for(int i = 0; i < 50 ; i++){
             cells.add(new FoodCell(rand.nextInt(screenWidth),rand.nextInt(screenHeight)));
         }
@@ -93,6 +99,11 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         cells.add(playerCell);
     }
 
+    /**
+     * Overrides the Thread's run method
+     * This method redraws the canvas as well as
+     * collision detection of the cells.
+     */
     @Override
     public void run() {
         while(isRunning){
@@ -128,8 +139,10 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         }
     }
 
-    /*
-    Removes any dead cells from the cells ArrayList
+    /**
+     * Removes any dead cells from the cells ArrayList
+     * An iterator is used to ensure concurrency is kept
+     * while iterating the cells arrayList on the separate thread.
      */
     public void removeDeadCells(){
         Iterator<Cell> i = cells.iterator();
@@ -145,12 +158,56 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         this.activity = activity;
     }
 
+    /**
+     * Starts the thread
+     */
     public void start(){
         isRunning = true;
         thread = new Thread(this);
         thread.start();
     }
 
+    /**
+     * Sets the isRunning field to the param passed in
+     * @param state
+     */
+    public void setRunning(boolean state){
+        isRunning = state;
+    }
+
+    /**
+     * Sets the X Coordinate of the Player Cell
+     * @param x
+     */
+    public void setNewXPlayerCell(float x){
+        playerCell.setNewX(x);
+    }
+
+    /**
+     * Sets the Y Coordinate of the Player Cell
+     * @param y
+     */
+    public void setNewYPlayerCell(float y){
+        playerCell.setNewY(y);
+    }
+
+    /**
+     * Checks to see if the PlayerCell has
+     * been instantiated
+     * @return boolean exists
+     */
+    public boolean playerCellExists(){
+        if(playerCell != null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    /**
+     * Stops the thread.
+     */
     public void stop(){
         isRunning = false;
         while(true){

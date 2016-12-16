@@ -11,7 +11,7 @@
         android:theme="@style/FullscreenTheme"
         android:hardwareAccelerated="true">
         <activity
-            android:name=".MenuActivity"
+            android:name=".activities.MenuActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CellViveActivity"
+            android:name=".activities.CellViveActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
@@ -31,21 +31,21 @@
 
         </activity>
         <activity
-            android:name=".HighScoreActivity"
+            android:name=".activities.HighScoreActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".activities.AboutActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme">
         </activity>
         <activity
-            android:name=".QuestionActivity"
+            android:name=".activities.QuestionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="landscape"

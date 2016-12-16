@@ -1,4 +1,4 @@
-package com.sta404.cellvive;
+package com.sta404.cellvive.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.sta404.cellvive.R;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -57,6 +59,9 @@ public class QuestionActivity extends Activity {
         generateQuestion();
     }
 
+    /**
+     * Creates a question by picking a random line from the CSV Questions asset file
+     */
     public void generateQuestion(){
         AssetManager am = getAssets();
         String line;

@@ -1,4 +1,4 @@
-package com.sta404.cellvive.com.sta404.cellvive.cell;
+package com.sta404.cellvive.cell;
 
 import android.graphics.Canvas;
 import android.graphics.drawable.ShapeDrawable;
@@ -22,7 +22,6 @@ public class EnemyCell extends Cell{
 
     @Override
     public void move(Canvas canvas) {
-        //super.move(canvas); TODO
         x += dx;
         y += dy;
         if(x > canvas.getWidth() - 100.0f || x < 0){

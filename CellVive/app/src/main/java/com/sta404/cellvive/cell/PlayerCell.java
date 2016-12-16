@@ -1,4 +1,4 @@
-package com.sta404.cellvive.com.sta404.cellvive.cell;
+package com.sta404.cellvive.cell;
 
 import android.graphics.Canvas;
 import android.graphics.drawable.ShapeDrawable;

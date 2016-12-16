@@ -1,4 +1,4 @@
-package com.sta404.cellvive;
+package com.sta404.cellvive.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.sta404.cellvive.R;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,7 +23,7 @@ import java.util.List;
  Name: HighScoreActivity
  */
 public class HighScoreActivity extends Activity {
-    List<String> scoresList = new ArrayList<String>();
+    ArrayList<String> scoresList = new ArrayList<String>();
     TextView txtPosition1,
             txtPosition2,
             txtPosition3,
@@ -85,16 +87,10 @@ public class HighScoreActivity extends Activity {
         scoresList.clear();
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-
-        readScoresFromFile("highscores.txt");
-        Collections.sort(scoresList);
-        generateHighScoreTable();
-        scoresList.clear();
-    }
-
+    /**
+     * Reads the scores in from the highscore text file
+     * @param fileName
+     */
     public void readScoresFromFile(String fileName) {
         Context context = this;
         String line;
@@ -112,6 +108,9 @@ public class HighScoreActivity extends Activity {
         }
     }
 
+    /**
+     * Populates the TextViews on the HighScore Layout xml with the scores
+     */
     public void generateHighScoreTable(){
         try{
             txtPosition1.setText("1st: " + scoresList.get(0));
