@@ -92,6 +92,16 @@ public class CellViveActivity extends Activity {
             if(resultCode == Activity.RESULT_CANCELED){
                 updateLives();
             }
+            else{
+                score = score + 100;
+                runOnUiThread(new Runnable(){
+
+                    @Override
+                    public void run() {
+                        txtVScore.setText("Score: " + score);
+                    }
+                });
+            }
         }
         board.isRunning = true;
         board.start(); //TODO pressingback button with 0 lives instead of answering question (or getting it wrong)

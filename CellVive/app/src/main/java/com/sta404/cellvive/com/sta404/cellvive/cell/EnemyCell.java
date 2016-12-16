@@ -17,7 +17,8 @@ public class EnemyCell extends Cell{
 
         shape = new ShapeDrawable(new OvalShape());
         shape.getPaint().setColor(0xffff0000); //TODO change this value
-        shape.setBounds((int)x,(int)y,(int)(x+100f),(int)(y+100f)); //TODO hard-coded value for cells
+        shape.setBounds((int)x,(int)y,(int)(x + 100.0f),(int)(y + 100.0f)); //TODO hard-coded value for cells
+
     }
 
     @Override
@@ -25,15 +26,17 @@ public class EnemyCell extends Cell{
         //super.move(canvas); TODO Might not be needed but hey-ho!
 
 
-        x+=dx;
-        y+=dy;
-        if(x>canvas.getWidth() || x<0)
-           dx=-dx;
-        if(y>canvas.getHeight() || y<0)
-           dy=-dy;
+        x += dx;
+        y += dy;
+        if(x > canvas.getWidth() - 100.0f || x < 0){
+            dx =- dx;
+        }
+        if(y > canvas.getHeight() - 100.0f || y < 0){
+            dy =- dy;
+        }
 
         //shape.setBounds((int)(x/2),(int)(y/2),(int)x,(int)y);
-        shape.setBounds((int)(x),(int)(y),(int)(x+100f),(int)(y+100f));
+        shape.setBounds((int)x,(int)y,(int)(x + 100.0f),(int)(y + 100.0f));
 
 shape.draw(canvas);
     }

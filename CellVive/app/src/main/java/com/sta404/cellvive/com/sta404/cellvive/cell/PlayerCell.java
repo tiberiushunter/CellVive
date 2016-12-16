@@ -49,22 +49,16 @@ public class PlayerCell extends Cell{
 
     @Override
     public void move(Canvas canvas) {
-
-        float dH = canvas.getHeight();
-        float dW = canvas.getWidth();
-
-
-
         newX = newX * 10;
         newY = newY * 10;
 
-        if (newX + oldX > dW || newX + oldX <0){
+        if ((newX + oldX) > (canvas.getWidth() - 75.0f)|| (newX + oldX) < 0){
             newX = oldX;
         }else{
             newX= newX + oldX;
         }
 
-        if (newY + oldY > dH || newY + oldY <0){
+        if ((newY + oldY) > (canvas.getHeight() - 75.0f)|| newY + oldY < 0){
             newY = oldY;
         }else{
             newY= newY + oldY;
@@ -78,7 +72,7 @@ public class PlayerCell extends Cell{
 
        // canvas.drawCircle(x, y, playerRadius, p);
        // canvas.drawRect(x, y, (x+50f),(y+50f), p);
-        shape.setBounds((int)x,(int)y,(int)x+75,(int)y+75);
+        shape.setBounds((int)x,(int)y,(int)(x+75.0f),(int)(y+75.0f));
         shape.draw(canvas);
         // canvas.drawText(" " + (int)x, 100,100, p);
     }
