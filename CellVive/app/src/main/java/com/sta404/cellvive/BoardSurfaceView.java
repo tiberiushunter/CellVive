@@ -56,7 +56,7 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         screenHeight = metrics.heightPixels;
 
         p = new Paint();
-        p.setColor(Color.WHITE);
+        p.setColor(Color.BLACK);
 
         holder = getHolder();
         thread = new Thread(this);
