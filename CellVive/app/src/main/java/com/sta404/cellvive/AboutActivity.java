@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ Name: AboutActivity
+ */
 public class AboutActivity extends Activity {
 
     @Override
@@ -20,8 +23,6 @@ public class AboutActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
         setContentView(R.layout.activity_about);
-
-
 
         TextView title = (TextView) findViewById(R.id.titleText);
         TextView txtVBack = (TextView) findViewById(R.id.txtVBack);

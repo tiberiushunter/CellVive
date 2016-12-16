@@ -3,13 +3,13 @@ package com.sta404.cellvive;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
+/**
+ Name: MenuActivity
+ */
 public class MenuActivity extends Activity {
     TextView txtVTitle, txtVNewGame, txtVHighScore, txtVAbout;
 
@@ -23,18 +23,16 @@ public class MenuActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
         setContentView(R.layout.activity_menu);
 
         txtVTitle = (TextView) findViewById(R.id.titleText);
-        txtVNewGame = (TextView) findViewById(R.id.txtVNewGame);    //TODO proper names
+        txtVNewGame = (TextView) findViewById(R.id.txtVNewGame);
         txtVHighScore = (TextView) findViewById(R.id.txtVHighScore);
         txtVAbout = (TextView) findViewById(R.id.txtVAbout);
 
         Typeface tfTitle = Typeface.createFromAsset(getAssets(), "fonts/scifi2ku.ttf");
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/scifi2k2.ttf");
 
-        //TODO for each TextView, set typeface
         txtVTitle.setTypeface(tfTitle);
         txtVNewGame.setTypeface(tf);
         txtVHighScore.setTypeface(tf);
@@ -43,7 +41,6 @@ public class MenuActivity extends Activity {
     }
 
     public void onClickPlay(View v) {
-       // txtVNewGame.setTextSize(80f); //TODO Animation upon clicking the options
         Intent intent = new Intent(this, CellViveActivity.class);
         this.startActivity(intent);
     }

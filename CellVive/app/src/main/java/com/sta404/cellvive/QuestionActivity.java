@@ -2,8 +2,6 @@ package com.sta404.cellvive;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -14,26 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileDescriptor;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
 
+/**
+ Name: QuestionActivity
+ */
 public class QuestionActivity extends Activity {
-
-    String question = "Which of these is an animal?";
-
-    String answerA = "Cactus";
-    String answerB = "Bear";
-    String answerC = "Tree";
-    String answerD = "Mushroom";
-
     //A = 1 ... D = 4
-    int correctAnswer = 2;
+    int correctAnswer;
 
     TextView txtVQuestion;
     Button btnAnswerA, btnAnswerB, btnAnswerC, btnAnswerD;
@@ -48,7 +38,6 @@ public class QuestionActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
         setContentView(R.layout.activity_question);
 
         txtVQuestion = (TextView) findViewById(R.id.questionText);

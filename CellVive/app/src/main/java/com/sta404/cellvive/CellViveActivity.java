@@ -3,15 +3,12 @@ package com.sta404.cellvive;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -22,6 +19,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+    Name: CellViveActivity
+ */
 public class CellViveActivity extends Activity {
 
     BoardSurfaceView board;
@@ -32,9 +32,6 @@ public class CellViveActivity extends Activity {
     int score = 0;
     int lives = 3;
 
-
-    public float oldX, oldY, newX, newY;
-
     SensorManager sensorManager;
     Sensor accelerometer;
     SensorEventListener listener = new SensorEventListener(){
@@ -44,7 +41,7 @@ public class CellViveActivity extends Activity {
                 if (board.playerCell != null) {
 
                     board.playerCell.setNewX(sensorEvent.values[1]);
-                    board.playerCell.setNewY(sensorEvent.values[0]); //-5
+                    board.playerCell.setNewY(sensorEvent.values[0]);
                 }
             }
         }
@@ -65,7 +62,6 @@ public class CellViveActivity extends Activity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
         setContentView(R.layout.activity_cell_vive);
 
         board = new BoardSurfaceView(this);
@@ -167,13 +163,8 @@ public class CellViveActivity extends Activity {
         }
     }
 
-
     public int getScore(){
         return score;
-    }
-
-    public int getLives(){
-        return lives;
     }
 
 }

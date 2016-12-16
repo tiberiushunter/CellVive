@@ -20,17 +20,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
-/** TODO Change all the class headers
- * Created by swele on 14/12/2016.
+/**
+ Name: BoardSurfaceView
  */
 
 public class BoardSurfaceView extends SurfaceView implements Runnable{
     SurfaceHolder holder;
     Thread thread;
+
     boolean isRunning = true;
+
     Paint p;
+
     ArrayList<Cell> cells = new ArrayList<Cell>();
     ArrayList<Cell> newCellsToAdd = new ArrayList<Cell>();
+
     PlayerCell playerCell;
 
     //Used by FoodCells
@@ -62,15 +66,12 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         thread = new Thread(this);
         thread.start();
 
-
         //Adds Food to the board
         createFoodHandler.postDelayed(new Runnable(){
             @Override
             public void run() {
-                //if(isRunning){
                     newCellsToAdd.add(new FoodCell(rand.nextInt(screenWidth),rand.nextInt(screenHeight)));
                     createFoodHandler.postDelayed(this, foodDelay);
-                //}
             }
         }, foodDelay);
 
@@ -78,10 +79,8 @@ public class BoardSurfaceView extends SurfaceView implements Runnable{
         createEnemyHandler.postDelayed(new Runnable(){
             @Override
             public void run() {
-                //if(isRunning) {
                     newCellsToAdd.add(new EnemyCell(rand.nextInt(screenWidth-100), rand.nextInt(screenHeight-100), 5, 5));
                     createEnemyHandler.postDelayed(this, enemyDelay);
-                //}
             }
         }, enemyDelay);
 

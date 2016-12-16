@@ -2,10 +2,8 @@ package com.sta404.cellvive;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -18,8 +16,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ Name: HighScoreActivity
+ */
 public class HighScoreActivity extends Activity {
-
     ArrayList<String> scoresList = new ArrayList<String>();
     TextView txtPosition1,
             txtPosition2,
@@ -153,7 +153,6 @@ public class HighScoreActivity extends Activity {
             txtPosition10.setText("10th: -");
         }
     }
-
 
     public void onClick(View v) {
         finish();

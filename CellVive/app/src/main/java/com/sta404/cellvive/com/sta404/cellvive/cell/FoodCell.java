@@ -4,7 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.ShapeDrawable;
 
 /**
- * Created by swele on 15/12/2016.
+ * Name: FoodCell
  */
 
 public class FoodCell extends Cell {
@@ -15,8 +15,8 @@ public class FoodCell extends Cell {
         this.y = y;
 
         shape = new ShapeDrawable();
-        shape.getPaint().setColor(0xff00ff00); //TODO change this value
-        shape.setBounds(x,y,(x+25),(y+25)); //TODO hard-coded value for cells
+        shape.getPaint().setColor(0xff00ff00);
+        shape.setBounds(x,y,(x+25),(y+25));
     }
 
     public void move(Canvas canvas){
