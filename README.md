@@ -1,4 +1,3 @@
 # CellVive
 
-An Android based game using a variety of Native APIs
-Mobile Development Asignment
+An Android game developed for a university Mobile Development Assignment. 
